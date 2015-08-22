@@ -1,0 +1,25 @@
+<div class="container-fluid" ng-controller="AdminPanelController">
+    <table class="table">
+        <thead>
+            <tr>
+                <th sort-column sc-sort-type="order" sc-sort-by="created_date" on-sort="sortByKey(key, order)">Time registered</th>
+                <th sort-column sc-sort-type="alphabet" sc-sort-by="name" on-sort="sortByKey(key, order)">Name</th>
+                <th sort-column sc-sort-type="alphabet" sc-sort-by="email" on-sort="sortByKey(key, order)">Email</th>
+                <th>Categories</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="user in users">
+                <td>{{user.created_date}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.categories | joinBy:', '}}</td>
+                <td>
+                    <a title="Edit user" href="#edit-user/{{user.id}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                    <a title="Delete user" href="#" ng-click="delete(user.id)" eat-click><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
